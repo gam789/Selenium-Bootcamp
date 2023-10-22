@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.rough.gam.DatePickerExercise">
+      <class name="com.rough.gam.LinkValidation">
         <methods>
-          <include name="testOne"/>
+          <include name="test"/>
         </methods>
-      </class> <!-- com.rough.gam.DatePickerExercise -->
+      </class> <!-- com.rough.gam.LinkValidation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
