@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,8 +17,13 @@ import org.testng.annotations.Test;
 public class Sprig {
 	
 	@Test
-	public void test() {
-		 WebDriver driver = new ChromeDriver();
+	public void test() throws Exception {
+		 WebDriver driver;
+		 
+		ChromeOptions option = new ChromeOptions();
+		option.addArguments("--disable-notifications");
+			
+		driver = new ChromeDriver(option);
 		 
 		 driver.get("https://sprig.store/");
 		 
@@ -31,10 +37,22 @@ public class Sprig {
 		 driver.findElement(By.xpath("//*[@id=\"sprig-premium-mobile-accessories\"]/div[1]/div/header/div[1]/div[2]/div[3]/div/div[1]/div/form/input[1]"))
 		 .sendKeys(Keys.ENTER);
 		 
-		 WebElement searchResult = driver.findElement(By.xpath("//*[@id=\"products-grid\"]/div[1]/div/div[2]/a"));
-		 searchResult.isDisplayed();
+		 driver.findElement(By.xpath("//*[@id=\"products-grid\"]/div[1]/div/div[1]/div[2]/div/div/form/button")).click();
 		 
-		 Assert.assertEquals(searchResult.isDisplayed(), true);
+		 /*driver.findElement(By.xpath("//tbody/tr[1]/td[4]/div[1]/div[1]/div[1]/i[1]")).click();
+		 
+		 driver.findElement(By.xpath("//*[@id=\"shopify-section-template--18012033057044__main\"]/div/div/div/div/div/div/form/div/div[1]/div[1]/table/tbody/tr[2]/td/div/button/span")).click();
+		 
+		 Thread.sleep(5000);
+		 
+		 WebElement valueElement = driver.findElement(By.xpath("//tbody/tr[1]/td[5]/span[1]"));
+		 String s = valueElement.getText();
+		 System.out.println(s);*/
+		 
+		 driver.findElement(By.xpath("//span[contains(text(),'Continue Shopping')]")).click();
+		 
+		 System.out.println(driver.getTitle());
+		 
 		 
 	}
 
